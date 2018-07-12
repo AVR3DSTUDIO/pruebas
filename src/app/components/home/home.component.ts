@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   public title: string;
 
     constructor(){
-      this.title = 'Bienvenido a NGZOO';
+      this.title = 'Bienvenido a IPATERA';
     }
     ngOnInit(){
       console.log('Componente Home Cargado!')

@@ -14,16 +14,16 @@ import { UserService } from '../../services/user.service';
 })
 
 export class LoginComponent implements OnInit {
-    public title: String
-    public user: User
-    public status: string
-    public identity
-    public token
-    public message: string
+    public title: String;
+    public user: User;
+    public status: string;
+    public identity;
+    public token;
+    public message: string;
 
     constructor(private _route: ActivatedRoute,private _router: Router, private _userService: UserService ) {
         this.title = 'Indentificate'
-        this.user = new User('','','','','','ROLE_USER','')
+        this.user = new User('', '', '', '', '', 'ROLE_USER', '');
     }
 
     ngOnInit(){
@@ -33,36 +33,36 @@ export class LoginComponent implements OnInit {
     onSubmit(loginForm){
         this._userService.signup(this.user).subscribe(
             response => {
-                this.identity = response.user
+                this.identity = response.user;
                 if (!response.user) {
-                    alert('Datos incorrectos')
+                    alert('Datos incorrectos');
                 } else {
-                    this.identity.password = ''
-                    localStorage.setItem('identity', JSON.stringify(this.identity))
+                    this.identity.password = '';
+                    localStorage.setItem('identity', JSON.stringify(this.identity));
                     this._userService.signup(this.user, 'true').subscribe(
                         response => {
-                            this.token = response.token
+                            this.token = response.token;
                             if (!this.token) {
-                                alert('Datos incorrectos')
+                                alert('Datos incorrectos');
                             } else {
-                                localStorage.setItem('token', this.token)    
-                                this.status = 'success'
-                                this._router.navigate(['/home'])
+                                localStorage.setItem('token', this.token);
+                                this.status = 'success';
+                                this._router.navigate(['/home']);
                             }
                         },
                         err => {
-                            console.log(<any> err)
+                            console.log(<any> err);
                         }
-                    ) 
+                    )
                 }
             },
             err => {
-                var errorMessage = <any> err
+                const errorMessage = <any> err;
                 if (errorMessage != null) {
-                    var body = JSON.parse(err._body)
-                    this.message = body.message
-                    this.status = 'error'
-                    loginForm.reset()
+                    const body = JSON.parse(err._body);
+                    this.message = body.message;
+                    this.status = 'error';
+                    loginForm.reset();
                 }
             }
         )

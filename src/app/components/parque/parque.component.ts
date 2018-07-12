@@ -14,14 +14,14 @@ export class ParqueComponent implements OnChanges, OnInit, OnDestroy {
 	@Output() pasameLosDatos = new EventEmitter();
 
   	constructor(){
-  		this.name = 'Parque 0.0.1 - natural para caballos';
+  		this.name = 'Parque 0.0.1 - natural para migrantes';
   		this.metros = 450;
   		this.vegetacion = 'Alta';
   		this.abierto = false;
   	}
 
   	ngOnInit(){
-  		console.log("cargando componente parque")
+  		console.log("cargando componente parque");
   	}
 
   	ngOnChanges(changes: SimpleChanges){

@@ -1,4 +1,5 @@
-export class animal {
+// tslint:disable-next-line:class-name
+export class patera {
     constructor(
         public _id: string,
         public name: string,
@@ -6,7 +7,7 @@ export class animal {
         public year: number,
         public image: string,
         public user: string
-    ){
+    ) {
 
     }
 }
